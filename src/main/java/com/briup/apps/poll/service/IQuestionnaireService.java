@@ -2,35 +2,35 @@ package com.briup.apps.poll.service;
 
 import java.util.List;
 
-import com.briup.apps.poll.bean.Course;
+import com.briup.apps.poll.bean.Questionnaire;
 
-public interface ICourseService {
+public interface IQuestionnaireService {
 	/**
 	 * 查询所有数据
 	 * @return
 	 * @throws Exception
 	 */
-	List<Course> findAll() throws Exception;
+	List<Questionnaire> findAll() throws Exception;
 	/**
 	 * 根据id查询一条数据
 	 * @param id
 	 * @return
 	 * @throws Exception
 	 */
-	Course findById(long id) throws Exception;
+	Questionnaire findById(long id) throws Exception;
 	/**
 	 * 根据关键字查询
 	 * @param keyWords
 	 * @return
 	 * @throws Exception
 	 */
-	List<Course> query(String keyWords) throws Exception;
+	List<Questionnaire> query(String keyWords) throws Exception;
 	/**
 	 * 更新或插入数据
-	 * @param course
+	 * @param questionnaire
 	 * @throws Exception
 	 */
-	void saveOrUpdate(Course course) throws Exception;
+	void saveOrUpdate(Questionnaire questionnaire) throws Exception;
 	/**
 	 * 根据id删除数据
 	 * @param id

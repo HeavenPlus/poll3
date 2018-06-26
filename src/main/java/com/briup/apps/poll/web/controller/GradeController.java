@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.briup.apps.poll.bean.Course;
-import com.briup.apps.poll.service.ICourseService;
+import com.briup.apps.poll.bean.Grade;
+import com.briup.apps.poll.service.IGradeService;
 import com.briup.apps.poll.util.MsgResponse;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(description="课程相关接口")
+@Api(description="年级相关接口")
 @RestController
-@RequestMapping("/course")
-public class CoursController {
+@RequestMapping("/grade")
+public class GradeController {
 	
 	@Autowired
-	private ICourseService courseService;
+	private IGradeService gradeService;
 	@ApiOperation(value="查询所有数据")
-	@GetMapping("findAllCourse")
-	public MsgResponse findAllCourse(){
+	@GetMapping("findAllGrade")
+	public MsgResponse findAllGrade(){
 		try {
-			List<Course> list =  courseService.findAll();
+			List<Grade> list =  gradeService.findAll();
 			//返回成功信息
 			return MsgResponse.success("success", list);
 		} catch (Exception e) {
@@ -40,8 +40,8 @@ public class CoursController {
 	@GetMapping("findById")
 	public MsgResponse findById(@RequestParam long id){
 		try {
-			Course course = courseService.findById(id);
-			return MsgResponse.success("success", course);
+			Grade grade = gradeService.findById(id);
+			return MsgResponse.success("success", grade);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
@@ -51,7 +51,7 @@ public class CoursController {
 	@GetMapping("findByKeyWords")
 	public MsgResponse findByKeyWords(@RequestParam String keyWords){
 		try {
-			List<Course> list = courseService.query(keyWords);
+			List<Grade> list = gradeService.query(keyWords);
 			return MsgResponse.success("successs", list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -60,9 +60,9 @@ public class CoursController {
 	}
 	@ApiOperation(value="更新或插入数据",notes="不输入id时执行插入操作，输入id时执行更新操作")
 	@PostMapping("saveOrUpdate")
-	public MsgResponse saveOrUpdate(Course course){
+	public MsgResponse saveOrUpdate(Grade grade){
 		try {
-			courseService.saveOrUpdate(course);
+			gradeService.saveOrUpdate(grade);
 			return MsgResponse.success("success", "success");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,7 +73,7 @@ public class CoursController {
 	@GetMapping("deleteById")
 	public MsgResponse deleteById(@RequestParam long id){
 		try {
-			courseService.deleteById(id);
+			gradeService.deleteById(id);
 			return MsgResponse.success("success", "删除成功！");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -84,7 +84,7 @@ public class CoursController {
 	@GetMapping("batchDelete")
 	public MsgResponse batchDelete(long[] ids){
 		try {
-			courseService.batchDelete(ids);
+			gradeService.batchDelete(ids);
 			return MsgResponse.success("success", "删除成功");
 		} catch (Exception e) {
 			e.printStackTrace();

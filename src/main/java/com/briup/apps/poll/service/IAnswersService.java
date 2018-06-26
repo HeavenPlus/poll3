@@ -2,35 +2,36 @@ package com.briup.apps.poll.service;
 
 import java.util.List;
 
-import com.briup.apps.poll.bean.Course;
+import com.briup.apps.poll.bean.Answers;
 
-public interface ICourseService {
+public interface IAnswersService {
+	
 	/**
 	 * 查询所有数据
 	 * @return
 	 * @throws Exception
 	 */
-	List<Course> findAll() throws Exception;
+	List<Answers> findAll() throws Exception;
 	/**
 	 * 根据id查询一条数据
 	 * @param id
 	 * @return
 	 * @throws Exception
 	 */
-	Course findById(long id) throws Exception;
+	Answers findById(long id) throws Exception;
 	/**
 	 * 根据关键字查询
 	 * @param keyWords
 	 * @return
 	 * @throws Exception
 	 */
-	List<Course> query(String keyWords) throws Exception;
+//	List<Answers> query(String keyWords) throws Exception;
 	/**
 	 * 更新或插入数据
-	 * @param course
+	 * @param answers
 	 * @throws Exception
 	 */
-	void saveOrUpdate(Course course) throws Exception;
+	void saveOrUpdate(Answers answers) throws Exception;
 	/**
 	 * 根据id删除数据
 	 * @param id
@@ -43,4 +44,5 @@ public interface ICourseService {
 	 * @throws Exception
 	 */
 	void batchDelete(long[] ids) throws Exception;
+	
 }

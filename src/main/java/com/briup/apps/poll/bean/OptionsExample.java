@@ -294,8 +294,8 @@ public class OptionsExample {
             return (Criteria) this;
         }
 
-        public Criteria andLabelLike(String value) {
-            addCriterion("label like", value, "label");
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", "%"+value+"%", "name");
             return (Criteria) this;
         }
 

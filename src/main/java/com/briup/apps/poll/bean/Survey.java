@@ -1,5 +1,9 @@
 package com.briup.apps.poll.bean;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="课调类")
 public class Survey {
     /**
      *
@@ -8,6 +12,7 @@ public class Survey {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="课调编号")
     private Long id;
 
     /**
@@ -17,6 +22,7 @@ public class Survey {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="课调状态")
     private String status;
 
     /**
@@ -26,6 +32,7 @@ public class Survey {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="课调编码")
     private String code;
 
     /**
@@ -35,6 +42,7 @@ public class Survey {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="课调日期")
     private String surveydate;
 
     /**
@@ -44,6 +52,7 @@ public class Survey {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="课程编号")
     private Long courseId;
 
     /**
@@ -53,6 +62,7 @@ public class Survey {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="班级编号")
     private Long clazzId;
 
     /**
@@ -62,6 +72,7 @@ public class Survey {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="用户编号")
     private Long userId;
 
     /**
@@ -71,6 +82,7 @@ public class Survey {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="问卷编号")
     private Long questionnaireId;
 
     /**

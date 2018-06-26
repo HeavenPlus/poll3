@@ -1,5 +1,9 @@
 package com.briup.apps.poll.bean;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="学校类")
 public class School {
     /**
      *
@@ -8,6 +12,7 @@ public class School {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="学校编号")
     private Long id;
 
     /**
@@ -17,6 +22,7 @@ public class School {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="学校名称")
     private String name;
 
     /**
@@ -26,6 +32,7 @@ public class School {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="学校图标")
     private String logopath;
 
     /**
@@ -35,6 +42,7 @@ public class School {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="学校地址")
     private String address;
 
     /**
@@ -44,6 +52,7 @@ public class School {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="学校电话")
     private String telephone;
 
     /**
@@ -53,6 +62,7 @@ public class School {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="学校版权")
     private String copyright;
 
     /**
@@ -62,6 +72,7 @@ public class School {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
+	@ApiModelProperty(value="学校描述")
     private String description;
 
     /**

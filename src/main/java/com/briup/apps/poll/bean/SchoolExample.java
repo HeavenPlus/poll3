@@ -295,7 +295,7 @@ public class SchoolExample {
         }
 
         public Criteria andNameLike(String value) {
-            addCriterion("name like", value, "name");
+            addCriterion("name like", "%"+value+"%", "name");
             return (Criteria) this;
         }
 

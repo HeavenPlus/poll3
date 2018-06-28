@@ -37,7 +37,7 @@ public class ClazzController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	@ApiOperation(value="查询所有数据")
+	@ApiOperation(value="查询所有班级数据并带有年级和班主任数据")
 	@GetMapping("findAllClazzVM")
 	public MsgResponse findAllClazzVM(){
 		try {

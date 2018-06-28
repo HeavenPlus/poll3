@@ -61,11 +61,33 @@ public class QuestionController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	@ApiOperation(value="根据id查询一条数据并带有选项信息",notes="查询时需要输入id")
+	@GetMapping("selectById")
+	public MsgResponse selectById(@RequestParam long id){
+		try {
+			QuestionVM questionVM = questionService.selectById(id);
+			return MsgResponse.success("success", questionVM);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
 	@ApiOperation(value="根据name关键字查询",notes="查询时需要输入name中的关键字")
 	@GetMapping("findByKeyWords")
 	public MsgResponse findByKeyWords(@RequestParam String keyWords){
 		try {
 			List<Question> list = questionService.query(keyWords);
+			return MsgResponse.success("successs", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	@ApiOperation(value="根据name关键字查询,并带有选项信息",notes="查询时需要输入name中的关键字")
+	@GetMapping("selectByKeyWords")
+	public MsgResponse selectByKeyWords(@RequestParam String keyWords){
+		try {
+			List<QuestionVM> list = questionService.selectByKeyWords(keyWords);
 			return MsgResponse.success("successs", list);
 		} catch (Exception e) {
 			e.printStackTrace();

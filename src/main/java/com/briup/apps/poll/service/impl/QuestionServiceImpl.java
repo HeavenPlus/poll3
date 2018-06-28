@@ -23,6 +23,7 @@ public class QuestionServiceImpl implements IQuestionService {
 	private QuestionVMMapper questionvmMapper;
 	@Autowired
 	private OptionsMapper optionsMapper;
+
 	@Override
 	public List<Question> findAll() throws Exception {
 		QuestionExample example = new QuestionExample();
@@ -102,6 +103,18 @@ public class QuestionServiceImpl implements IQuestionService {
 				optionsMapper.insert(option);
 			}
 		}	
+	}
+
+	@Override
+	public QuestionVM selectById(long id) throws Exception {
+		
+		return questionvmMapper.selectById(id);
+	}
+
+	@Override
+	public List<QuestionVM> selectByKeyWords(String keyWords) throws Exception {
+
+		return questionvmMapper.selectByKeyWords(keyWords);
 	}
 
 }

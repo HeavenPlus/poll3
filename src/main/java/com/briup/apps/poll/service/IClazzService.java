@@ -44,6 +44,10 @@ public interface IClazzService {
 	 * @throws Exception
 	 */
 	void batchDelete(long[] ids) throws Exception;
-	
+	/**
+	 * 查询年级和班主任数据
+	 * @return
+	 * @throws Exception
+	 */
 	List<ClazzVM> findAllClazzVM() throws Exception;
 }

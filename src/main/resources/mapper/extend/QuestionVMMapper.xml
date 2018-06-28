@@ -3,7 +3,12 @@
 <mapper namespace="com.briup.apps.poll.dao.extend.QuestionVMMapper">
  	<select id="selectAll" resultMap="QuestionVMResultMap">
  		select * from poll_question
- 		<!-- id,name,questionType -->
+ 	</select>
+ 	<select id="selectById" resultMap="QuestionVMResultMap">
+ 		select * from poll_question where id = #{id}
+ 	</select>
+ 	<select id="selectByKeyWords" resultMap="QuestionVMResultMap">
+ 		select * from poll_question where name like "%"#{name}"%"
  	</select>
  	
  	<!-- 定义结果集 -->

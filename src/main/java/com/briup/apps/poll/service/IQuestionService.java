@@ -44,6 +44,18 @@ public interface IQuestionService {
 	 * @throws Exception
 	 */
 	void batchDelete(long[] ids) throws Exception;
-	
+	/**
+	 * 查询所有问题信息，并带有选项信息
+	 * @return
+	 * @throws Exception
+	 */
 	List<QuestionVM> findAllOptions() throws Exception;
+	/**
+	 * 根据id 查询问题信息，并带有选项信息
+	 * @return
+	 * @throws Exception
+	 */
+	QuestionVM selectById(long id) throws Exception;
+	
+	List<QuestionVM> selectByKeyWords(String keyWords) throws Exception;
 }

@@ -10,6 +10,10 @@
 		<result column="name" property="name" />
 		<result column="description" property="description" />
 		<association column="grade_id" property="grade"
-			select="com.briup.apps.poll.dao.GradeMapper.selectByPrimaryKey"></association>
+			select="com.briup.apps.poll.dao.GradeMapper.selectByPrimaryKey">
+		</association>
+		<association column="charge_id" property="user"
+			select="com.briup.apps.poll.dao.UserMapper.selectByPrimaryKey">
+		</association>
 	</resultMap>
 </mapper>

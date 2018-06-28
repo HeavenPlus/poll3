@@ -10,21 +10,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.briup.apps.poll.bean.QuestionnaireQuestion;
+import com.briup.apps.poll.bean.extend.QuestionnaireQuestionVM;
 import com.briup.apps.poll.service.IQuestionnaireQuestionService;
 import com.briup.apps.poll.util.MsgResponse;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-@Api(description="问卷-问题相关接口")
+
+@Api(description = "问卷-问题相关接口")
 @RestController
 @RequestMapping("/questionnaireQuestion")
 public class QuestionnaireQuestionController {
 	@Autowired
 	private IQuestionnaireQuestionService questionnaireQuestionService;
-	
-	@ApiOperation(value="查询所有数据",notes="不需要输入")
+
+	@ApiOperation(value = "查询所有数据", notes = "不需要输入")
 	@GetMapping("findAllQuestionnaireQuestion")
-	public MsgResponse findAllQuestionnaireQuestion(){
+	public MsgResponse findAllQuestionnaireQuestion() {
 		try {
 			List<QuestionnaireQuestion> list = questionnaireQuestionService.findAll();
 			return MsgResponse.success("success", list);
@@ -33,10 +35,22 @@ public class QuestionnaireQuestionController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	
-	@ApiOperation(value="根据id查询数据",notes="需要输入id")
+
+	@ApiOperation(value = "查询所有问卷和问题数据", notes = "不需要输入")
+	@GetMapping("findAllQQ")
+	public MsgResponse findAllQQ() {
+		try {
+			List<QuestionnaireQuestionVM> list = questionnaireQuestionService.findAllQuestionnaireQuestionVM();
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+
+	@ApiOperation(value = "根据id查询数据", notes = "需要输入id")
 	@GetMapping("findById")
-	public MsgResponse findById(@RequestParam long id){
+	public MsgResponse findById(@RequestParam long id) {
 		try {
 			QuestionnaireQuestion qq = questionnaireQuestionService.findById(id);
 			return MsgResponse.success("success", qq);
@@ -45,9 +59,10 @@ public class QuestionnaireQuestionController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	@ApiOperation(value="根据id删除数据",notes="需要输入id")
+
+	@ApiOperation(value = "根据id删除数据", notes = "需要输入id")
 	@GetMapping("deleteById")
-	public MsgResponse deleteById(long id){
+	public MsgResponse deleteById(long id) {
 		try {
 			questionnaireQuestionService.deleteById(id);
 			return MsgResponse.success("success", "删除成功！");
@@ -56,10 +71,10 @@ public class QuestionnaireQuestionController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	
-	@ApiOperation(value="插入或更新数据",notes="插入不需要输入id，更新需要输入id")
+
+	@ApiOperation(value = "插入或更新数据", notes = "插入不需要输入id，更新需要输入id")
 	@PostMapping("saveOrUpdate")
-	public MsgResponse saveOrUpdate(QuestionnaireQuestion qq){
+	public MsgResponse saveOrUpdate(QuestionnaireQuestion qq) {
 		try {
 			questionnaireQuestionService.saveOrUpdate(qq);
 			return MsgResponse.success("succss", "更新成功！");
@@ -68,10 +83,10 @@ public class QuestionnaireQuestionController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	
-	@ApiOperation(value="批量删除数据",notes="输入多个id")
+
+	@ApiOperation(value = "批量删除数据", notes = "输入多个id")
 	@GetMapping("batchDelete")
-	public MsgResponse batchDelete(long[] ids){
+	public MsgResponse batchDelete(long[] ids) {
 		try {
 			questionnaireQuestionService.batchDelete(ids);
 			return MsgResponse.success("success", "批量删除成功！");

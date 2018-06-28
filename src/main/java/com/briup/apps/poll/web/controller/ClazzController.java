@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.briup.apps.poll.bean.Clazz;
+import com.briup.apps.poll.bean.extend.ClazzVM;
 import com.briup.apps.poll.service.IClazzService;
 import com.briup.apps.poll.util.MsgResponse;
 
@@ -36,6 +37,20 @@ public class ClazzController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	@ApiOperation(value="查询所有数据")
+	@GetMapping("findAllClazzVM")
+	public MsgResponse findAllClazzVM(){
+		try {
+			List<ClazzVM> list = clazzService.findAllClazzVM();
+			//返回成功信息
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			//返回错误信息
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
 	@ApiOperation(value="根据id查询一条数据",notes="查询时需要输入id")
 	@GetMapping("findById")
 	public MsgResponse findById(@RequestParam long id){

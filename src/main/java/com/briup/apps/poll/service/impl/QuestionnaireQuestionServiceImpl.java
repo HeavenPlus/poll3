@@ -7,13 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.briup.apps.poll.bean.QuestionnaireQuestion;
 import com.briup.apps.poll.bean.QuestionnaireQuestionExample;
+import com.briup.apps.poll.bean.extend.QuestionnaireQuestionVM;
 import com.briup.apps.poll.dao.QuestionnaireQuestionMapper;
+import com.briup.apps.poll.dao.extend.QuestionnaireQuestionVMMappre;
 import com.briup.apps.poll.service.IQuestionnaireQuestionService;
 
 @Service
 public class QuestionnaireQuestionServiceImpl implements IQuestionnaireQuestionService{
 	@Autowired
 	private QuestionnaireQuestionMapper questionnaireQuestionMapper;
+	@Autowired
+	private QuestionnaireQuestionVMMappre questionnaireQuestionVMMappre;
+	
 	@Override
 	public List<QuestionnaireQuestion> findAll() throws Exception {
 		QuestionnaireQuestionExample example = new QuestionnaireQuestionExample();
@@ -46,5 +51,13 @@ public class QuestionnaireQuestionServiceImpl implements IQuestionnaireQuestionS
 			questionnaireQuestionMapper.deleteByPrimaryKey(id);
 		}
 	}
+
+	@Override
+	public List<QuestionnaireQuestionVM> findAllQuestionnaireQuestionVM() throws Exception {
+
+		return questionnaireQuestionVMMappre.selectAll();
+	}
+
+	
 	
 }

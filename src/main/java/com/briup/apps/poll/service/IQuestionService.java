@@ -3,6 +3,7 @@ package com.briup.apps.poll.service;
 import java.util.List;
 
 import com.briup.apps.poll.bean.Question;
+import com.briup.apps.poll.bean.extend.QuestionVM;
 
 public interface IQuestionService {
 	/**
@@ -27,10 +28,10 @@ public interface IQuestionService {
 	List<Question> query(String keyWords) throws Exception;
 	/**
 	 * 更新或插入数据
-	 * @param question
+	 * @param questionVm
 	 * @throws Exception
 	 */
-	void saveOrUpdate(Question question) throws Exception;
+	void saveOrUpdateQuestionVM(QuestionVM questionVM) throws Exception;
 	/**
 	 * 根据id删除数据
 	 * @param id
@@ -43,4 +44,6 @@ public interface IQuestionService {
 	 * @throws Exception
 	 */
 	void batchDelete(long[] ids) throws Exception;
+	
+	List<QuestionVM> findAllOptions() throws Exception;
 }

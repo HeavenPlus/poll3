@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.briup.apps.poll.bean.Question;
+import com.briup.apps.poll.bean.extend.QuestionVM;
 import com.briup.apps.poll.service.IQuestionService;
 import com.briup.apps.poll.util.MsgResponse;
 
@@ -28,6 +29,19 @@ public class QuestionController {
 	public MsgResponse findAllQuestion(){
 		try {
 			List<Question> list =  questionService.findAll();
+			//返回成功信息
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			//返回错误信息
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	@ApiOperation(value="查询所有数据")
+	@GetMapping("findAllOptions")
+	public MsgResponse findAllOptions(){
+		try {
+			List<QuestionVM> list = questionService.findAllOptions();
 			//返回成功信息
 			return MsgResponse.success("success", list);
 		} catch (Exception e) {
@@ -58,17 +72,20 @@ public class QuestionController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	@ApiOperation(value="更新或插入数据",notes="不输入id时执行插入操作，输入id时执行更新操作")
-	@PostMapping("saveOrUpdate")
-	public MsgResponse saveOrUpdate(Question question){
+	
+	@ApiOperation(value="保存或修改问题",
+			notes="当id不为空表示修改，否则表示更新，保存和更新的时候需要提交选项数据")
+	@PostMapping("saveOrUpdateQuestion")
+	public MsgResponse saveOrUpdateQuestion(QuestionVM questionVM){
 		try {
-			questionService.saveOrUpdate(question);
-			return MsgResponse.success("success", "success");
+			questionService.saveOrUpdateQuestionVM(questionVM);
+			return MsgResponse.success("保存成功", null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	
 	@ApiOperation(value="根据id删除数据",notes="删除时需要输入id")
 	@GetMapping("deleteById")
 	public MsgResponse deleteById(@RequestParam long id){

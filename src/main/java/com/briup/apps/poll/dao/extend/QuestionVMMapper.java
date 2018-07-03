@@ -11,4 +11,6 @@ public interface QuestionVMMapper {
 	QuestionVM selectById(long id);
 	
 	List<QuestionVM> selectByKeyWords(String keyWords);
+
+	List<QuestionVM> selectByQuestionnaireId(long id);
 }

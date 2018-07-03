@@ -9,42 +9,44 @@ import com.briup.apps.poll.bean.Answers;
 import com.briup.apps.poll.bean.AnswersExample;
 import com.briup.apps.poll.dao.AnswersMapper;
 import com.briup.apps.poll.service.IAnswersService;
+
 @Service
-public class AnswersServiceImpl implements IAnswersService{
+public class AnswersServiceImpl implements IAnswersService {
 	@Autowired
 	private AnswersMapper answersMapper;
 	
 	@Override
-	public List<Answers> findAll() throws Exception {
-		AnswersExample example = new AnswersExample();
-		return answersMapper.selectByExample(example);
-	}
-
-	@Override
-	public Answers findById(long id) throws Exception {
-		
-		return answersMapper.selectByPrimaryKey(id);
-	}
-	@Override
 	public void saveOrUpdate(Answers answers) throws Exception {
 		if(answers.getId()!=null){
 			answersMapper.updateByPrimaryKey(answers);
-		}else{
+		} else {
 			answersMapper.insert(answers);
 		}
 	}
 
 	@Override
-	public void deleteById(long id) throws Exception {
-		answersMapper.deleteByPrimaryKey(id);
+	public List<Answers> findAnswersBySurveyId(long id) throws Exception {
+		AnswersExample example = new AnswersExample();
+		example.createCriteria().andSurveyIdEqualTo(id);
+		return answersMapper.selectByExample(example);
 	}
 
 	@Override
-	public void batchDelete(long[] ids) throws Exception {
-		for(long id : ids){
-			answersMapper.deleteByPrimaryKey(id);
-		}
+	public Answers findById(long id) throws Exception {
+		return answersMapper.selectByPrimaryKey(id);
 	}
 
-	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

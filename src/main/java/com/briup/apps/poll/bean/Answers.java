@@ -22,7 +22,7 @@ public class Answers {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
-	@ApiModelProperty(value="单选")
+	@ApiModelProperty(value="单选答案eg：5|3")
     private String selections;
 
     /**
@@ -32,7 +32,7 @@ public class Answers {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
-	@ApiModelProperty(value="多选")
+	@ApiModelProperty(value="多选答案eg:5,4|3,3")
     private String checks;
 
     /**
@@ -42,7 +42,7 @@ public class Answers {
      *
      * @mbg.generated Mon Jun 25 16:38:58 CST 2018
      */
-	@ApiModelProperty(value="简答")
+	@ApiModelProperty(value="简答答案eg:xxxxxx|xxxxx")
     private String content;
 
     /**

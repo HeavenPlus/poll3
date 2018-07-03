@@ -3,6 +3,7 @@ package com.briup.apps.poll.service;
 import java.util.List;
 
 import com.briup.apps.poll.bean.Questionnaire;
+import com.briup.apps.poll.bean.extend.QuestionnaireVM;
 
 public interface IQuestionnaireService {
 	/**
@@ -18,6 +19,9 @@ public interface IQuestionnaireService {
 	 * @throws Exception
 	 */
 	Questionnaire findById(long id) throws Exception;
+	
+	
+	QuestionnaireVM findVMById(long id) throws Exception;
 	/**
 	 * 根据关键字查询
 	 * @param keyWords
@@ -30,7 +34,7 @@ public interface IQuestionnaireService {
 	 * @param questionnaire
 	 * @throws Exception
 	 */
-	void saveOrUpdate(Questionnaire questionnaire) throws Exception;
+	void saveOrUpdate(Questionnaire questionnaire,long[] ids) throws Exception;
 	/**
 	 * 根据id删除数据
 	 * @param id

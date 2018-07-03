@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.briup.apps.poll.bean.Questionnaire;
+import com.briup.apps.poll.bean.extend.QuestionnaireVM;
 import com.briup.apps.poll.service.IQuestionnaireService;
 import com.briup.apps.poll.util.MsgResponse;
 
@@ -47,6 +48,17 @@ public class QuestionnaireController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	@ApiOperation(value="根据id查询一条数据,包括问题信息",notes="查询时需要输入id")
+	@GetMapping("findVMById")
+	public MsgResponse findVMById(@RequestParam long id){
+		try {
+			QuestionnaireVM questionnaireVM = questionnaireService.findVMById(id);
+			return MsgResponse.success("success", questionnaireVM);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
 	@ApiOperation(value="根据name关键字查询",notes="查询时需要输入name中的关键字")
 	@GetMapping("findByKeyWords")
 	public MsgResponse findByKeyWords(@RequestParam String keyWords){
@@ -60,9 +72,9 @@ public class QuestionnaireController {
 	}
 	@ApiOperation(value="更新或插入数据",notes="不输入id时执行插入操作，输入id时执行更新操作")
 	@PostMapping("saveOrUpdate")
-	public MsgResponse saveOrUpdate(Questionnaire questionnaire){
+	public MsgResponse saveOrUpdate(Questionnaire questionnaire,long[] ids){
 		try {
-			questionnaireService.saveOrUpdate(questionnaire);
+			questionnaireService.saveOrUpdate(questionnaire,ids);
 			return MsgResponse.success("success", "success");
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -7,54 +7,69 @@ import org.springframework.stereotype.Service;
 
 import com.briup.apps.poll.bean.Grade;
 import com.briup.apps.poll.bean.GradeExample;
+import com.briup.apps.poll.bean.extend.GradeVM;
 import com.briup.apps.poll.dao.GradeMapper;
+import com.briup.apps.poll.dao.extend.GradeVMMapper;
 import com.briup.apps.poll.service.IGradeService;
 
 @Service
 public class GradeServiceImpl implements IGradeService {
 	@Autowired
 	private GradeMapper gradeMapper;
-
+	@Autowired
+	private GradeVMMapper gradeVMMapper;
+	
+	/**
+	 * 查询所有年级信息，并包含所属学校信息
+	 */
 	@Override
-	public List<Grade> findAll() throws Exception {
-		GradeExample example = new GradeExample();
-		return gradeMapper.selectByExampleWithBLOBs(example);
+	public List<GradeVM> findAllGrade() throws Exception {
+		return gradeVMMapper.selectAll();
 	}
-
+	
+	/**
+	 * 根据id查询年级信息，包含所属学校信息
+	 */
 	@Override
-	public Grade findById(long id) throws Exception {
-
-		return gradeMapper.selectByPrimaryKey(id);
+	public GradeVM findById(long id) throws Exception {
+		return gradeVMMapper.selectById(id);
 	}
-
+	
+	/**
+	 * 根据name属性关键字查询年级信息，包含所属学校信息
+	 */
 	@Override
-	public List<Grade> query(String keyWords) throws Exception {
-		GradeExample example = new GradeExample();
-		// 添加一个条件，name属性中包含keyWords
-		example.createCriteria().andNameLike(keyWords);
-		return gradeMapper.selectByExampleWithBLOBs(example);
+	public List<GradeVM> findByKeyWords(String keyWords) {
+		return gradeVMMapper.selectByKeyWords(keyWords);
 	}
-
-	@Override
-	public void saveOrUpdate(Grade grade) throws Exception {
-		if (grade.getId() != null) {
-			// 更新
-			gradeMapper.updateByPrimaryKey(grade);
-		} else {
-			// 插入
-			gradeMapper.insert(grade);
-		}
-	}
-
+	
+	/**
+	 *  根据id删除年级信息，删除时会删除包含的班级信息
+	 */
 	@Override
 	public void deleteById(long id) throws Exception {
 		gradeMapper.deleteByPrimaryKey(id);
 	}
-
+	
+	/**
+	 *  根据id批量删除年级信息，删除时会删除包含的班级信息
+	 */
 	@Override
 	public void batchDelete(long[] ids) throws Exception {
 		for (long id : ids) {
 			gradeMapper.deleteByPrimaryKey(id);
+		}
+	}
+	
+	/**
+	 * 保存或更新年级信息，id为空时保存信息，id不为空时修改信息
+	 */
+	@Override
+	public void saveOrUpdate(Grade grade) throws Exception {
+		if (grade.getId() != null) {
+			gradeMapper.updateByPrimaryKey(grade);
+		} else {
+			gradeMapper.insert(grade);
 		}
 	}
 }

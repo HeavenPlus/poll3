@@ -45,8 +45,8 @@
     <table tableName="poll_question" domainObjectName="Question" ></table>
     <table tableName="poll_questionnaire" domainObjectName="Questionnaire" ></table>
     <table tableName="poll_qq" domainObjectName="QuestionnaireQuestion" ></table>
-    <table tableName="poll_survey" domainObjectName="Survey" ></table>
     <table tableName="poll_answers" domainObjectName="Answers" ></table>
+    <table tableName="poll_survey" domainObjectName="Survey" ></table>
 -->
   </context>
 </generatorConfiguration>

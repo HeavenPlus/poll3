@@ -3,6 +3,7 @@ package com.briup.apps.poll.service;
 import java.util.List;
 
 import com.briup.apps.poll.bean.Survey;
+import com.briup.apps.poll.bean.extend.SurveyVM;
 
 public interface ISurveyService {
 	/**
@@ -17,7 +18,15 @@ public interface ISurveyService {
 	 * @return
 	 * @throws Exception
 	 */
-	Survey findById(long id) throws Exception;
+	List<SurveyVM> findAllVM() throws Exception;
+	/**
+	 * 根据id查询一条数据
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	
+	SurveyVM findById(long id) throws Exception;
 	/**
 	 * 更新或插入数据
 	 * @param survey
@@ -36,4 +45,6 @@ public interface ISurveyService {
 	 * @throws Exception
 	 */
 	void batchDelete(long[] ids) throws Exception;
+	
+	Survey findSurveyById(long id) throws Exception;
 }
